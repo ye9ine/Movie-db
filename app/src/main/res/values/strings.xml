@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Kbz movie app</string>
+    <string name="splash_title">The movie db</string>
+    <string name="upcoming_movie">Upcoming movie</string>
+    <string name="trending_right_now">Trending right now</string>
+    <string name="in_theaters">In Theaters</string>
+    <string name="on_tv">On Tv</string>
+    <string name="poster">Poster</string>
+    <string name="trailer">Trailer</string>
+</resources>
