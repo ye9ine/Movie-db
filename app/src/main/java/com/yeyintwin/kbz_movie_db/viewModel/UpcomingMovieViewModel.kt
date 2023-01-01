@@ -17,6 +17,7 @@ class UpcomingMovieViewModel() : ViewModel() {
 
     private val upcomingMovieLiveData = MutableLiveData<List<MovieModel>>()
     private val errorMessage = MutableLiveData<String>()
+    private val isShowSlider = MutableLiveData<Boolean>()
 
     fun getUpcomingMovie() {
 
@@ -25,20 +26,30 @@ class UpcomingMovieViewModel() : ViewModel() {
             override fun onResponse(call: Call<MovieResultModel>, response: Response<MovieResultModel>) {
                 if(response.isSuccessful){
                     if(response.body() != null){
+                        isShowSlider.value = true
                         val videoList = response.body()?.results
                         upcomingMovieLiveData.value = videoList!!
+                    }else{
+                        isShowSlider.value = false
                     }
+                }else{
+                    isShowSlider.value = false
                 }
             }
 
             override fun onFailure(call: Call<MovieResultModel>, t: Throwable) {
                 errorMessage.value = t.message
+                isShowSlider.value = false
             }
         })
     }
 
     fun observeUpcomingMovieLiveData() : LiveData<List<MovieModel>> {
         return upcomingMovieLiveData
+    }
+
+    fun isShowSlider() : LiveData<Boolean> {
+        return isShowSlider
     }
 
     fun errorMessage() : LiveData<String> {

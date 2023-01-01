@@ -1,7 +1,6 @@
 import com.yeyintwin.kbz_movie_db.model.MoviePosterResultModel
 import com.yeyintwin.kbz_movie_db.model.MovieResultModel
 import com.yeyintwin.kbz_movie_db.model.MovieTrailerResultModel
-import com.yeyintwin.kbz_movie_db.model.TvSeriesResultModel
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

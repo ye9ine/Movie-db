@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kbz movie app</string>
+    <string name="app_name">The Movie Db</string>
     <string name="splash_title">The movie db</string>
     <string name="upcoming_movie">Upcoming movie</string>
     <string name="trending_right_now">Trending right now</string>

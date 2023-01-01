@@ -19,6 +19,7 @@
 - Glide - loading images
 - BaseRecyclerViewAdapter - implementing adapters and viewHolders
 - Paging3 - pagination load data from network
-- viewbinding - binding view, easily write code and interaction with view
+- viewBinding - binding view, easily write code and interaction with view
 - slider layout - image slide show with animation
 - youtube player - load youtube video
+- room - offline support
