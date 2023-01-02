@@ -1,5 +1,5 @@
 # The Movie Db
-## 🎬 An Android application using [The Movie DB](https://www.themoviedb.org) based on Kotlin MVVM architecture and paging 
+## 🎬 An Android application using [The Movie DB](https://www.themoviedb.org) based on Kotlin MVVM architecture and paging 3
 
 ## Features
 
