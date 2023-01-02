@@ -183,7 +183,6 @@ class MainActivity : AppCompatActivity(), OnRefreshListener, BaseSliderView.OnSl
         //show and bind upcoming movie data to slider layout
         upcomingMovieViewModel.observeUpcomingMovieLiveData().observe(this, Observer {
             mainBinding.sliderLayout.removeAllSliders()
-            Log.d("upcoming", it.size.toString())
             for(i in it){
                 var textSliderView = TextSliderView(this)
                 textSliderView.apply {
@@ -388,6 +387,7 @@ class MainActivity : AppCompatActivity(), OnRefreshListener, BaseSliderView.OnSl
     }
 
     override fun onPageScrollStateChanged(state: Int) {
+
     }
 
     override fun onStop() {

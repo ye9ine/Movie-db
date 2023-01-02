@@ -1,10 +1,10 @@
 package com.yeyintwin.kbz_movie_db
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.options.IFramePlayerOptions
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.ui.DefaultPlayerUiController
@@ -31,6 +32,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var moviePosterAdapter: MoviePosterAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var movieTrailerViewModel: MovieTrailerViewModel
+    private lateinit var youtubeVideoId:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +57,7 @@ class MovieDetailActivity : AppCompatActivity() {
             //binding data to view
             val releaseYear = if (movieModel?.type == MovieDbConstant().movie) movieModel.release_date?.split('-')?.get(0) else movieModel?.first_air_date?.split('-')?.get(0)
             if (movieModel != null) {
-                tvTitle.text = if (movieModel?.type == MovieDbConstant().movie) "${movieModel.title} (${releaseYear})" else "${movieModel.original_name} (${releaseYear})"
+                tvTitle.text = if (movieModel.type == MovieDbConstant().movie) "${movieModel.title} (${releaseYear})" else "${movieModel.original_name} (${releaseYear})"
             }
             rtBar.rating = movieModel?.vote_average?.div(2).toString().toFloat()
             tvRating.text = movieModel?.vote_average.toString()
@@ -96,6 +98,20 @@ class MovieDetailActivity : AppCompatActivity() {
             }
         }
 
+        movieDetailBinding.youtubePlayerView.addFullScreenListener(object :YouTubePlayerFullScreenListener{
+            override fun onYouTubePlayerEnterFullScreen() {
+
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=${youtubeVideoId}"))
+                intent.putExtra("force_fullscreen", true)
+                startActivity(intent)
+            }
+
+            override fun onYouTubePlayerExitFullScreen() {
+
+            }
+
+        })
+
 
         //init and cue youtube player
         movieTrailerViewModel.observeMovieTrailerLiveData().observe(this@MovieDetailActivity, Observer {
@@ -103,6 +119,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     val defaultPlayerUiController = DefaultPlayerUiController(movieDetailBinding.youtubePlayerView, youTubePlayer)
                     movieDetailBinding.youtubePlayerView.setCustomPlayerUi(defaultPlayerUiController.rootView)
+                    youtubeVideoId = it.first().key
                     youTubePlayer.cueVideo(it.first().key, 0F)
                 }
             }

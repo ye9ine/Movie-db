@@ -23,3 +23,4 @@
 - slider layout - image slide show with animation
 - youtube player - load youtube video
 - room - offline support
+- unit testing

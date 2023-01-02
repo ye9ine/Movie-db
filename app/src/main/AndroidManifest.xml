@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Kbz_movie_db"
         tools:targetApi="31">
         <activity
+            android:name=".FullScreenTrailerVideoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PhotoDetailViewActivity"
             android:exported="false">
             <meta-data
@@ -24,7 +31,7 @@
         <activity
             android:name=".MovieDetailActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
