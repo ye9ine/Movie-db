@@ -6,6 +6,7 @@
 - Show popular movie, tv series and upcoming movie
 - Youtube trailer and poster
 - Search your favourite movie and tv seires
+- support offline
 
 # Tech & Open-source libraries
 - 100% Kotlin based + Coroutines
