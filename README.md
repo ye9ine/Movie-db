@@ -1,6 +1,9 @@
 # The Movie Db
 ## 🎬 An Android application using [The Movie DB](https://www.themoviedb.org) based on Kotlin MVVM architecture and paging 3
 
+![Screenshot_20230727_114317](https://github.com/ye9ine/Movie-db/assets/40852715/871b82e4-81df-46d5-8bbf-0ebe0816f7c9)
+
+
 ## Features
 
 - Show popular movie, tv series and upcoming movie
