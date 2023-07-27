@@ -26,5 +26,3 @@
 - room - offline support
 - unit testing
 
-![viber_image_2023-07-15_22-04-53-017](https://github.com/ye9ine/Movie-db/assets/40852715/4a3ef794-c766-4db2-a4dc-488eff44e881)
-
